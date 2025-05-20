@@ -16,6 +16,15 @@ docker run -d \
   -v $(pwd)/database/pgdata:/var/lib/postgresql/data \
   tp1-database
 
+  Dockerfile:
+  FROM postgres:17.2-alpine
+
+ENV POSTGRES_DB=db \
+    POSTGRES_USER=usr \
+    POSTGRES_PASSWORD=pwd
+
+COPY initdb /docker-entrypoint-initdb.d/
+
 # 1-4 Why do we need a multistage build? And explain each step of this dockerfile.
   It allows us to use a full JDK in one stage to compile the code and a lightweight JRE in the second stage to run it. This will keep the final Docker image small and clean.
 
@@ -42,13 +51,19 @@ docker run -d \
 
 # 1-9 Document your publication commands and published images in dockerhub.
 Tagging the images
+
   docker tag tp1-database venujadesilva/tp1-database:1.0
+  
   docker tag tp1-backend venujadesilva/tp1-backend:1.0
+  
   docker tag tp1-http venujadesilva/tp1-http:1.0
 
 Pushing the images to dockerhub
+
   docker push venujadesilva/tp1-database:1.0
+  
   docker push venujadesilva/tp1-backend:1.0
+  
   docker push venujadesilva/tp1-http:1.0
 
 # 1-10 Why do we put our images into an online repo?
