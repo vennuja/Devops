@@ -45,7 +45,7 @@ Tagging the images
   docker tag tp1-backend venujadesilva/tp1-backend:1.0
   docker tag tp1-http venujadesilva/tp1-http:1.0
 
-# Pushing the images to dockerhub
+Pushing the images to dockerhub
   docker push venujadesilva/tp1-database:1.0
   docker push venujadesilva/tp1-backend:1.0
   docker push venujadesilva/tp1-http:1.0
