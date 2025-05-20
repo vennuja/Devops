@@ -17,6 +17,7 @@ docker run -d \
   tp1-database
 
   Dockerfile:
+  
   FROM postgres:17.2-alpine
 
 ENV POSTGRES_DB=db \
