@@ -1,0 +1,35 @@
+services:
+  database:
+    build: ./database
+    networks:
+      - app-network
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    networks:
+      - app-network
+    depends_on:
+      - database
+    ports:
+      - "8085:8080"
+
+  http:
+    build: ./http
+    networks:
+      - app-network
+    depends_on:
+      - backend
+    ports:
+      - "8086:80"
+
+networks:
+  app-network:
+
+volumes:
+  pgdata:
