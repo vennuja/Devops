@@ -5,7 +5,8 @@
   So that data is saved outside the container and is not lost when the container is deleted.
 
 # 1-3 Document your database container essentials: commands and Dockerfile.
-  docker build -t tp1-database .
+docker build -t tp1-database
+
 docker run -d \
   --name database \
   --network app-network \
