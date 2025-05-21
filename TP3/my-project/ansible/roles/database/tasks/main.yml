@@ -1,0 +1,13 @@
+
+- name: Launch database container
+  docker_container:
+    name: database
+    image: venujadesilva/tp-devops-database:latest
+    state: started
+    restart_policy: always
+    env:
+      POSTGRES_DB: db
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+    networks:
+      - name: app-network

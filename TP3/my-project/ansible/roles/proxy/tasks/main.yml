@@ -1,0 +1,11 @@
+- name: Launch httpd proxy
+  docker_container:
+    name: http
+    image: venujadesilva/tp-devops-http-server:latest
+    state: started
+    restart_policy: always
+    ports:
+      - "80:80"
+    networks:
+      - name: app-network
+

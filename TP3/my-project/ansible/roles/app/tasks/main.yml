@@ -1,0 +1,8 @@
+- name: Launch backend container
+  docker_container:
+    name: app
+    image: venujadesilva/tp-devops-backend:latest
+    state: started
+    restart_policy: always
+    networks:
+      - name: app-network
