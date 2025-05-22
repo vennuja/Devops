@@ -1,11 +1,19 @@
+- name: copy httpd.conf file
+  copy:
+    src: httpd.conf
+    dest: /opt/simple-api/httpd.conf
+
 - name: Launch httpd proxy
   docker_container:
     name: http
     image: venujadesilva/tp-devops-http-server:latest
     state: started
+    pull: yes
     restart_policy: always
     ports:
       - "80:80"
     networks:
       - name: app-network
+    volumes:
+      - /opt/simple-api/httpd.conf:/usr/local/apache2/conf/httpd.conf
 
